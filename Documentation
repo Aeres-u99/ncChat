@@ -1,0 +1,52 @@
+	 -------------------Author-----------------------------------
+	|This program was mainly developed by following Programmers:|
+	|1]. Kunal P. Temkar [Network Utility] 			    |
+	|2]. ShiroiAkuma       [Client Server Program]              |
+	|3]. Hiren Patel [Leader and Commenting]                    |
+	-------------------Purpose: Documentation--------------------
+	This Documentation is Intended to provide a crisp guideline to
+	use the Program. The codes are purely in Shell scripted and 
+	Should not pose any difficulty on standard distributions.
+	Dependencies:
+	1].cURL -- curl is a tool to transfer data from or to a server.
+	2].Netcat -- Swiss army knife for network hackers :)
+	In case you are unsure about the presence of package, please 
+	Execute installation file so as to ensure the proper installation
+	and execution of code.
+	----------------------------Purpose:Program------------------------------------
+	Programs are intended for very basic operations, the client server
+	program can be used to chat and share files among the computer in
+	same network.
+	Other one employs use of curl to obtain weather forecast about 
+	entered location and other one obtains site status 
+	-----------------------------------Execution------------------------------------
+	Execution is pretty much straight forward, if the programs are 
+	present in /bin/then just by calling NetApps from shell should execute it
+	,or you can choose to prefer executing individual programs :)
+	or if you dont want to clutter the /bin
+	put the NetApps entire code package somewhere in your path and invoke
+	preferably they can be executed with bash <ProgramName> as well
+	----------------------------------Instructions----------------------------------
+	1]. Network utility:
+	Netork utility is nothing more than a basic weather forecasting program and 
+	a website status provider.
+	Their usage is pretty much straight forward, execute the programs and input the
+	desired location/website and pray for output heheh
+	2] Chat program:
+	Well this is quite complex, the thing is one of the party in chat must initiate
+	the server, that party will provide the server ip to client which client will 
+	use for further communication
+	-------------------------------------Scope--------------------------------------
+	Well this program can be extended to provide dictionary meaning of a word,
+	To create an offline mirror of a website and the client server programs can
+	be used to stimulate a remote terminal and Broadcast mode of server,In this way
+	there are practically a lot more usage such as automated backup creator.
+	With help of some more tools one must be able to communicate over the Internet
+	---------------------------------XPrecautionsX----------------------------------
+	Please note that all of the network communications are basically unencrypted and 
+	can be sniffed, it would be wise to not use it on public networks.
+	-----------------------------Removal--------------------------------------------
+	Removal is as simple as deleting these files,they will basically not 
+	cause any harm to system though
+_____________________________________________________________________________________________
+

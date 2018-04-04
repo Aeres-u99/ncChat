@@ -1,0 +1,30 @@
+#!/bin/bash
+echo "******************************************************************"
+echo "**************************** WELCOME *****************************"
+echo "******************************************************************"
+echo "##################################################################"
+echo "              SMALL APPLICATION BASED UTILITY SET                 "
+echo "##################################################################"
+echo "#1.[Weather Forecasting]                                         #"
+echo "#2.[Website Status]                                              #"
+echo "#3.[Exit]                                                        #"
+echo "##################################################################"
+read -e -p "Enter your choice [1/2/x]: " -i "x" ch
+while true
+do
+    case $ch in
+    1) clear
+       read -e -p "Enter your choice: " -i "mumbai" loc
+       a="curl http://wttr.in/"
+       b="$loc"
+       c=$ $a$b
+       break;;
+    2) clear
+       read -e -p "Enter the website: " -i "www.mu.ac.in" site
+       curl -s --head http://$site | grep "HTTP"
+       break;;
+    x) echo "You have chosen to exit"
+	clear && exit
+	break;;
+    esac
+done

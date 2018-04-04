@@ -1,0 +1,41 @@
+#!/bin/bash
+clear
+echo "******************************************************************"
+echo "**************************** WELCOME *****************************"
+echo "******************************************************************"
+echo "##################################################################"
+echo "###                          PROGRAMS                          ###"
+echo "##################################################################"
+echo "### [1]. Curl Based Application                                ###"
+echo "### [2]. Server initiation for chat                            ###"
+echo "### [3]. Client initiation for chat                            ###"
+echo "### [4]. Documentation                                         ###"
+echo "### [5]. Netcat-Manual Entry                                   ###"
+echo "### [6]. Curl-Manual Entry 				     ###"
+echo "### [x]. Exit                                                  ###"
+echo "##################################################################"
+read -e -p "Enter your choice: " -i "x"
+while true
+do
+	case $choice in 
+	1) clear && bash Codes
+	   break;;
+	2) clear && bash Server
+	   break;;
+	3) clear && bash Client
+	   break;;
+	4) clear
+	   echo "Use arrow keys to navigate up/down"
+	   echo "Press q to exit"
+	   cat Documentation | less 
+	   break;;
+	5)clear && man nc
+		break;;
+	6)clear && man curl
+		break;;
+	x) clear
+	   echo "Thank you for using our Program ^_^"
+	   exit
+           break;;
+	esac
+done

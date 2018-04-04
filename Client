@@ -1,0 +1,68 @@
+#!/bin/bash
+DisplayLineswithhash(){
+echo "################################################################"
+echo "****************************************************************"
+echo "################################################################"
+echo "# 							     #"
+}
+DisplayLineswithdash(){
+echo "----------------------------------------------------------------"
+echo "****************************************************************"
+}
+ChatClient(){
+read -e -p "Enter your name here user: " -i "CLIENT" CLIENTNAME
+echo "Your name is $CLIENTNAME"
+read -e -p "Enter server ip here: " -i "127.0.0.1" SERVERIP
+echo "Server IP is: $SERVERIP"
+read -e -p "Enter the port you wish to connect to: " -i "1234" PORT
+echo "Port chosen by you is $PORT"
+echo "TO EXIT OR QUIT CONNECTION PRESS <CTRL+C>"
+SERVERNAME=$(echo "$CLIENTNAME" | nc  $PORT)
+nc $SERVERIP $PORT | while read line; do echo "[$SERVERNAME ]:> $line"; done
+}
+ChatFeature(){
+clear
+DisplayLineswithhash
+echo "[Chat mode initiated...]!"
+DisplayLineswithdash
+ChatClient
+}
+FileReceiverMode(){
+clear
+echo "YOu have enabled client/sender in file receiving mode!"
+read -e -p "Enter file name along with Path extension: " -i "file.ext" FILE
+read -e -p "Enter the port you wish to use for sharing the file: " -i "1234" PORT
+read -e -p "Enter server address: " -i "127.0.0.1" server
+echo "FILE Sender IS ACTIVE"
+FILE="${FILE/#\~/$HOME}"
+`eval $(nc $server $PORT < $FILE)`
+echo "File sender..."
+}
+CheckNC(){
+if ! [ -x "$(command -v nc)" ]; then
+	  echo 'Error: Netcat is not installed.Please install it :3' >&2
+	    exit 1
+    fi
+}
+CallAndMenu(){
+DisplayLineswithhash
+echo "### WELCOME TO BASH BASED CHAT CLIENT AND UNSECURED FILE SHARER ###"
+echo "### CURRENTLY YOU ARE THE CLIENT                                ###"
+echo "### PLEASE CHOOSE ONE OF THE FOLLOWING MODE TO USE CLIENT IN    ###"
+echo "### [chat]. CHAT WITH SERVER...                                 ###"
+echo "### [share]. SHARE A FILE WITH SERVER...                        ###"
+echo "### [x]. EXIT...                                                ###"
+echo "###################################################################"
+read CHOICE
+case $CHOICE in
+	"chat") clear
+		ChatFeature
+		;;
+	"share") clear
+		 FileReceiverMode
+		 ;;
+	"x") clear && exit
+esac
+}
+CheckNC
+CallAndMenu

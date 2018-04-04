@@ -1,0 +1,6 @@
+#!/bin/bash
+sudo -i
+export http_proxy=http://students:students@10.1.1.1:8080/
+export https_proxy=https://students:students@10.1.1.1:8080/
+apt-get update && apt-get -y install curl nc
+

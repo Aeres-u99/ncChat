@@ -1,0 +1,75 @@
+#!/bin/bash
+DisplayLineswithhash(){
+echo "################################################################"
+echo "****************************************************************"
+echo "################################################################"
+echo "# 							     #"
+}
+DisplayLineswithdash(){
+echo "----------------------------------------------------------------"
+echo "****************************************************************"
+}
+ManualPrintServerIP(){
+	clear
+	echo 'The Server IP is: '
+	ifconfig | grep "inet addr:"
+	echo 'Please give this IP to client'
+}
+ChatServer(){
+read -e -p "Enter your name here user: " -i "SERVER" SERVERNAME
+echo "Your name is $SERVERNAME"
+read -e -p "Enter the port you wish to listen to: " -i "1234" PORT
+echo "Port chosen by you is $PORT"
+echo "TO EXIT OR QUIT CONNECTION PRESS <CTRL+C>"
+CLIENTNAME=$(echo "$SERVERNAME" | nc -l $PORT)
+nc -l $PORT | while read line; do echo "[$CLIENTNAME ]:> $line"; done
+}
+ChatFeature(){
+clear
+DisplayLineswithhash
+echo "You have enabled server in chat mode!"
+ManualPrintServerIP
+DisplayLineswithdash
+ChatServer
+}
+FileReceiverMode(){
+clear
+echo "YOu have enabled server in file receiving mode!"
+ifconfig | grep "inet"
+echo "You should use this ip for communication with client"
+read -e -p "Enter file name along with extension: " -i "file.ext" FILE
+read -e -p "Enter the port you wish to use for sharing the file: " -i "1234" PORT
+echo "FILE RECEIVER IS ACTIVE"
+nc -lv $PORT > $FILE
+echo "File received..."
+}
+CheckNC(){
+if ! [ -x "$(command -v nc)" ]; then
+	  echo 'Error: Netcat is not installed.Please install it :3' >&2
+	    exit 1
+    fi
+}
+CallAndMenu(){
+DisplayLineswithhash
+echo "### WELCOME TO BASH BASED CHAT CLIENT AND UNSECURED FILE SHARER ###"
+echo "### CURRENTLY YOU ARE THE SERVER                                ###"
+echo "### PLEASE CHOOSE ONE OF THE FOLLOWING MODE TO USE SERVER IN    ###"
+echo "### [chat]. CHAT WITH CLIENT...                                 ###"
+echo "### [share]. SHARE A FILE WITH CLIENT...                        ###"
+echo "### [x]. EXIT...                                                ###"
+echo "###################################################################"
+read CHOICE
+case $CHOICE in
+	"chat") clear
+		ChatFeature
+		;;
+	"share")clear 
+		FileReceiverMode
+		;;
+	"x") clear && exit
+esac
+}
+CheckNC
+CallAndMenu
+
+
