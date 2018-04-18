@@ -17,7 +17,8 @@ echo "Server IP is: $SERVERIP"
 read -e -p "Enter the port you wish to connect to: " -i "1234" PORT
 echo "Port chosen by you is $PORT"
 echo "TO EXIT OR QUIT CONNECTION PRESS <CTRL+C>"
-SERVERNAME=$(echo "$CLIENTNAME" | nc  $PORT)
+SERVERNAME=$(echo "$CLIENTNAME" | nc $SERVERIP $PORT)
+serverip="$SERVERIP"
 nc $SERVERIP $PORT | while read line; do echo "[$SERVERNAME ]:> $line"; done
 }
 ChatFeature(){

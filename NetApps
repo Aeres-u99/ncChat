@@ -14,10 +14,10 @@ echo "### [5]. Netcat-Manual Entry                                   ###"
 echo "### [6]. Curl-Manual Entry 				     ###"
 echo "### [x]. Exit                                                  ###"
 echo "##################################################################"
-read -e -p "Enter your choice: " -i "x"
+read -e -p "Enter your choice: " -i "x" choice
 while true
 do
-	case $choice in 
+ case $choice in 
 	1) clear && bash Codes
 	   break;;
 	2) clear && bash Server

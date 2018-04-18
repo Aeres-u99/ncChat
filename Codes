@@ -10,6 +10,8 @@ echo "#2.[Website Status]                                              #"
 echo "#3.[Exit]                                                        #"
 echo "##################################################################"
 read -e -p "Enter your choice [1/2/x]: " -i "x" ch
+export http_proxy=http://students:students@10.1.1.1:8080/
+export https_proxy=https://students:students@10.1.1.1:8080/
 while true
 do
     case $ch in
